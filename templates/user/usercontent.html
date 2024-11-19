@@ -1,0 +1,25 @@
+{% extends 'user/userindex.html' %}
+{% load static %}
+
+
+{% block contents %}
+<br>
+<br>
+
+
+<div class="card mb-3" style="max-width: 540px; display: flex; float: center; justify-content: center; margin-left: 30pc;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ blog.image.url }}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ blog.title }}</h5>
+        <p class="card-text">{{ blog.content }}</p>
+        <a href="{% url 'Comment' blog.id %}" class="card-link">Comment</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

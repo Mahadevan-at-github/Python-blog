@@ -1,0 +1,23 @@
+{% extends 'user/userindex.html' %}
+{% load static %}
+
+
+{% block contents %}
+  <div class="container mt-5">
+    <h2>Search Results for "{{ query }}"</h2>
+
+    <!-- If no results are found -->
+    {% if not blogs %}
+      <p>No blog posts found matching your query.</p>
+    {% else %}
+      <div class="list-group">
+        {% for blog in blogs %}
+          <a href="{% url 'blog_detail' blog.id %}" class="list-group-item list-group-item-action">
+            <h5 class="mb-1">{{ blog.title }}</h5>
+            <p class="mb-1">{{ blog.excerpt|truncatewords:20 }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
